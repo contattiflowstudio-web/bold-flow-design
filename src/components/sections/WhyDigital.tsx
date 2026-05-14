@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Eye, Search, Zap, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
@@ -33,10 +34,10 @@ export const WhyDigital = () => {
                 {t("why.box.a")} <span className="text-gradient-primary">{t("why.box.b")}</span>
               </p>
               <Button className="mt-5 bg-white text-primary hover:bg-white/90 shadow-elegant" asChild>
-                <a href="#contact">
+                <Link to="/contact">
                   {t("why.box.cta")}
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
