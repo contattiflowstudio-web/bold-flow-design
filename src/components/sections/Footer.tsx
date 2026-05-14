@@ -59,8 +59,8 @@ export const Footer = () => {
             </ul>
             <div className="mt-5 flex items-center gap-3">
               {[
-                { Icon: Instagram, href: "https://www.instagram.com/igflowstudio/", label: "Instagram" },
-                { Icon: Linkedin, href: "#", label: "LinkedIn" },
+                { Icon: Instagram, href: "https://www.instagram.com/igflowstudio", label: "Instagram" },
+                { Icon: Linkedin, href: "https://www.linkedin.com/in/flowstudio", label: "LinkedIn" },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}

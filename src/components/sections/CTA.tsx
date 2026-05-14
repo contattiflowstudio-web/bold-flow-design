@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export const CTA = () => {
@@ -30,7 +31,7 @@ export const CTA = () => {
                 className="bg-white text-primary hover:bg-white/90 shadow-elegant"
                 asChild
               >
-                <a href="mailto:hello@flowstudio.co">
+                <a href="mailto:contattiflowstudio@gmail.com">
                   {t("cta.primary")}
                   <ArrowRight className="h-5 w-5" />
                 </a>
@@ -51,9 +52,9 @@ export const CTA = () => {
                   WhatsApp
                 </a>
               </Button>
-              <a href="#portfolio" className="text-primary-foreground/90 hover:text-primary-foreground underline-offset-4 hover:underline">
+              <Link to="/portfolio" className="text-primary-foreground/90 hover:text-primary-foreground underline-offset-4 hover:underline">
                 {t("cta.secondary")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
