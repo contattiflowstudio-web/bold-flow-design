@@ -151,6 +151,10 @@ const dict = {
   "portfolio.tag.launch": { it: "Lancio Prodotto", en: "Product Launch" },
   "portfolio.tag.hospitality": { it: "Ristorazione", en: "Hospitality" },
   "portfolio.viewProject": { it: "Vedi Progetto", en: "View Project" },
+  "portfolio.desc.dolceVita": { it: "Sito vetrina per una gelateria artigianale: identità calda e fotografica, menu stagionale e prenotazioni dirette.", en: "Showcase site for an artisan gelateria: warm photographic identity, seasonal menu and direct bookings." },
+  "portfolio.desc.pulse09": { it: "Landing page per il lancio di un prodotto tech: countdown, animazioni fluide e conversione ottimizzata.", en: "Landing page for a tech product launch: countdown, fluid animations and optimized conversion." },
+  "portfolio.desc.ironclad": { it: "Brand identity e sito per un marchio premium: tipografia decisa, palette scura e presenza autorevole.", en: "Brand identity and site for a premium label: bold typography, dark palette and an authoritative presence." },
+  "portfolio.desc.sottoLeStelle": { it: "Esperienza digitale per un ristorante all'aperto: atmosfera notturna, gallery curata e prenotazioni semplici.", en: "Digital experience for an open-air restaurant: nocturnal mood, curated gallery and easy reservations." },
 
   // SocialProof
   "social.kicker": { it: "Scelto dai brand che vogliono crescere", en: "Trusted by brands that want to grow" },
