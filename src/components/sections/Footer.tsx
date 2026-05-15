@@ -2,9 +2,15 @@ import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/flow-logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Footer = () => {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
+  const phoneHref = isMobile ? "https://wa.me/393520017088" : "tel:+393520017088";
+  const phoneProps = isMobile
+    ? { target: "_blank", rel: "noopener noreferrer" as const }
+    : {};
   return (
     <footer className="relative border-t border-border/50 pt-16 pb-8">
       <div className="container">
@@ -50,7 +56,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-3.5 w-3.5 text-primary shrink-0" />
-                <a href="tel:+393520017088" className="hover:text-foreground transition-colors">352 001 7088</a>
+                <a href={phoneHref} {...phoneProps} className="hover:text-foreground transition-colors">352 001 7088</a>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />
