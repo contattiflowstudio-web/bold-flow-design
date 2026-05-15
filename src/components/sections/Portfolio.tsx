@@ -12,14 +12,15 @@ type Project = {
   title: string;
   image: string;
   tagKey: TranslationKey;
+  descKey: TranslationKey;
   url: string;
 };
 
 const projects: Project[] = [
-  { title: "La Dolce Vita", image: dolceVita, tagKey: "portfolio.tag.hospitality", url: "https://contattiflowstudio-web.github.io/gelateria/" },
-  { title: "PULSE/09", image: pulse09, tagKey: "portfolio.tag.launch", url: "https://contattiflowstudio-web.github.io/pulse09/" },
-  { title: "IRONCLAD", image: ironclad, tagKey: "portfolio.tag.brand", url: "https://contattiflowstudio-web.github.io/Ironclad/" },
-  { title: "Sotto le Stelle", image: sottoLeStelle, tagKey: "portfolio.tag.hospitality", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/" },
+  { title: "La Dolce Vita", image: dolceVita, tagKey: "portfolio.tag.hospitality", descKey: "portfolio.desc.dolceVita", url: "https://contattiflowstudio-web.github.io/gelateria/" },
+  { title: "PULSE/09", image: pulse09, tagKey: "portfolio.tag.launch", descKey: "portfolio.desc.pulse09", url: "https://contattiflowstudio-web.github.io/pulse09/" },
+  { title: "IRONCLAD", image: ironclad, tagKey: "portfolio.tag.brand", descKey: "portfolio.desc.ironclad", url: "https://contattiflowstudio-web.github.io/Ironclad/" },
+  { title: "Sotto le Stelle", image: sottoLeStelle, tagKey: "portfolio.tag.hospitality", descKey: "portfolio.desc.sottoLeStelle", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/" },
 ];
 
 export const Portfolio = () => {
@@ -55,42 +56,42 @@ export const Portfolio = () => {
         </div>
 
         <div className="relative">
-          {/* Single rectangle slider — one image per project */}
-          <div className="relative mx-auto max-w-5xl h-[26rem] md:h-[34rem] overflow-hidden rounded-3xl glass shadow-elegant">
-            <div
-              className="flex h-full transition-transform duration-1000 ease-in-out"
-              style={{ width: `${total * 100}%`, transform: `translateX(-${active * (100 / total)}%)` }}
-            >
-              {projects.map((p) => (
-                <div key={p.title} className="relative h-full" style={{ width: `${100 / total}%` }}>
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-background/10 to-transparent" />
-                </div>
-              ))}
+          {/* Editorial slide: text beside a smaller image */}
+          <div
+            key={projects[active].title}
+            className="mx-auto max-w-6xl rounded-3xl glass shadow-elegant p-6 md:p-10 animate-fade-in"
+          >
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="order-2 md:order-1 text-center md:text-left">
+                <p className="text-xs uppercase tracking-[0.2em] text-primary-glow mb-4">
+                  {t(projects[active].tagKey)}
+                </p>
+                <h3 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-5">
+                  {projects[active].title}
+                </h3>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-7 max-w-md mx-auto md:mx-0">
+                  {t(projects[active].descKey)}
+                </p>
+                <Button
+                  size="lg"
+                  className="bg-white text-primary hover:bg-white/90 shadow-elegant"
+                  asChild
+                >
+                  <a href={projects[active].url} target="_blank" rel="noopener noreferrer">
+                    {t("portfolio.viewProject")}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+              <div className="order-1 md:order-2 relative aspect-[4/3] md:aspect-[5/4] rounded-2xl overflow-hidden">
+                <img
+                  src={projects[active].image}
+                  alt={projects[active].title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
             </div>
-          </div>
-
-          {/* Project info — updates with active project */}
-          <div key={projects[active].title} className="mt-10 text-center animate-fade-in">
-            <p className="text-xs uppercase tracking-[0.2em] text-primary-glow mb-3">
-              {t(projects[active].tagKey)}
-            </p>
-            <h3 className="font-display text-3xl md:text-5xl font-bold mb-6">{projects[active].title}</h3>
-            <Button
-              size="lg"
-              className="bg-white text-primary hover:bg-white/90 shadow-elegant"
-              asChild
-            >
-              <a href={projects[active].url} target="_blank" rel="noopener noreferrer">
-                {t("portfolio.viewProject")}
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </Button>
           </div>
 
           {/* Project nav arrows */}
@@ -98,7 +99,7 @@ export const Portfolio = () => {
             type="button"
             onClick={() => go(-1)}
             aria-label="Previous project"
-            className="absolute left-2 md:-left-4 top-[13rem] md:top-[17rem] -translate-y-1/2 z-20 h-12 w-12 rounded-full glass-strong inline-flex items-center justify-center hover:bg-background/80 hover:scale-110 transition-all duration-300"
+            className="absolute left-2 md:-left-4 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full glass-strong inline-flex items-center justify-center hover:bg-background/80 hover:scale-110 transition-all duration-300"
           >
             <ChevronLeft className="h-5 w-5 text-foreground" />
           </button>
@@ -106,7 +107,7 @@ export const Portfolio = () => {
             type="button"
             onClick={() => go(1)}
             aria-label="Next project"
-            className="absolute right-2 md:-right-4 top-[13rem] md:top-[17rem] -translate-y-1/2 z-20 h-12 w-12 rounded-full glass-strong inline-flex items-center justify-center hover:bg-background/80 hover:scale-110 transition-all duration-300"
+            className="absolute right-2 md:-right-4 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full glass-strong inline-flex items-center justify-center hover:bg-background/80 hover:scale-110 transition-all duration-300"
           >
             <ChevronRight className="h-5 w-5 text-foreground" />
           </button>
