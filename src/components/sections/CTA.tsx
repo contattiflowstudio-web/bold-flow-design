@@ -2,9 +2,17 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const CTA = () => {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
+  const emailHref = isMobile
+    ? "https://mail.google.com/mail/?view=cm&fs=1&to=contattiflowstudio@gmail.com"
+    : "mailto:contattiflowstudio@gmail.com";
+  const emailProps = isMobile
+    ? { target: "_blank", rel: "noopener noreferrer" as const }
+    : {};
   return (
     <section id="contact" className="relative py-28 md:py-36">
       <div className="container">
@@ -31,7 +39,7 @@ export const CTA = () => {
                 className="bg-white text-primary hover:bg-white/90 shadow-elegant"
                 asChild
               >
-                <a href="mailto:contattiflowstudio@gmail.com">
+                <a href={emailHref} {...emailProps}>
                   {t("cta.primary")}
                   <ArrowRight className="h-5 w-5" />
                 </a>
