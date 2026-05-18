@@ -158,20 +158,20 @@ const dict = {
 
   // SocialProof
   "social.kicker": { it: "Scelto dai brand che vogliono crescere", en: "Trusted by brands that want to grow" },
-  "social.t1.role": { it: "Founder, Lumen Analytics", en: "Founder, Lumen Analytics" },
+  "social.t1.role": { it: "Proprietario, Attività Locale", en: "Owner, Local Business" },
   "social.t1.quote": {
-    it: "Flow Studio ha rifatto il nostro sito e il funnel è raddoppiato in 90 giorni. Non si limitano a fare design — pensano come growth operator.",
-    en: "Flow Studio rebuilt our site and our funnel doubled in 90 days. They don't just design — they think like growth operators.",
+    it: "Mi sono affidato a Flow Studio per il restyling del sito della mia attività e il risultato ha superato le aspettative. Hanno lavorato con grande precisione, curando ogni dettaglio sia dal punto di vista estetico che funzionale. Comunicazione sempre chiara e professionale durante tutto il progetto.",
+    en: "I entrusted Flow Studio with my business website restyling and the result exceeded expectations. They worked with great precision, caring for every detail from both an aesthetic and functional point of view. Communication was always clear and professional throughout the project.",
   },
-  "social.t2.role": { it: "CEO, Northwind Goods", en: "CEO, Northwind Goods" },
+  "social.t2.role": { it: "Cliente Privato", en: "Private Client" },
   "social.t2.quote": {
-    it: "Il team ha gestito web, social e ads dall'inizio alla fine. Finalmente abbiamo un partner che muove davvero il fatturato.",
-    en: "The team handled web, social and ads end-to-end. We finally have one partner who actually moves the revenue needle.",
+    it: "Professionalità e attenzione al cliente davvero impeccabili. Il team di Flow Studio ha saputo trasformare le nostre idee in un sito moderno, veloce e ben strutturato. Ho apprezzato soprattutto l'accuratezza con cui hanno gestito ogni fase del lavoro, rispettando tempi e richieste.",
+    en: "Truly impeccable professionalism and customer care. The Flow Studio team managed to transform our ideas into a modern, fast and well-structured website. I especially appreciated the accuracy with which they handled every phase of the work, respecting deadlines and requests.",
   },
-  "social.t3.role": { it: "Direttrice Creativa, Maison Velvet", en: "Creative Director, Maison Velvet" },
+  "social.t3.role": { it: "Cliente Privato", en: "Private Client" },
   "social.t3.quote": {
-    it: "Bello, preciso, in linea con il brand. Hanno colto la nostra voce meglio di agenzie il doppio più grandi — e a doppia velocità.",
-    en: "Beautiful, sharp, on-brand. They captured our voice better than agencies twice their size — and shipped twice as fast.",
+    it: "Collaborare con Flow Studio è stata un'esperienza molto positiva. Sono persone competenti, disponibili e molto precise nel loro lavoro. Il progetto è stato seguito con grande cura e il risultato finale trasmette qualità e professionalità sotto ogni aspetto.",
+    en: "Working with Flow Studio was a very positive experience. They are competent, helpful and very precise in their work. The project was followed with great care and the final result conveys quality and professionalism in every aspect.",
   },
 
   // CTA
