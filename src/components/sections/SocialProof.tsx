@@ -45,19 +45,9 @@ export const SocialProof = () => {
                 ))}
               </div>
               <blockquote className="text-foreground/90 leading-relaxed flex-1">"{t(td.quoteKey)}"</blockquote>
-              <figcaption className="mt-6 flex items-center gap-3">
-                <img
-                  src={td.avatar}
-                  alt={td.name}
-                  loading="lazy"
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 rounded-full object-cover ring-2 ring-primary-glow/40"
-                />
-                <div>
-                  <div className="font-semibold">{td.name}</div>
-                  <div className="text-sm text-muted-foreground">{t(td.roleKey)}</div>
-                </div>
+              <figcaption className="mt-6">
+                <div className="font-semibold">{td.name}</div>
+                <div className="text-sm text-muted-foreground">{t(td.roleKey)}</div>
               </figcaption>
             </figure>
           ))}
