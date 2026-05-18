@@ -47,7 +47,6 @@ export const SocialProof = () => {
               <blockquote className="text-foreground/90 leading-relaxed flex-1">"{t(td.quoteKey)}"</blockquote>
               <figcaption className="mt-6">
                 <div className="font-semibold">{td.name}</div>
-                <div className="text-sm text-muted-foreground">{t(td.roleKey)}</div>
               </figcaption>
             </figure>
           ))}

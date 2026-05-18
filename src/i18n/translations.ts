@@ -175,7 +175,7 @@ const dict = {
   },
 
   // CTA
-  "cta.badge": { it: "Prenotazioni aperte — Q3 2026", en: "Now booking — Q3 2026" },
+  "cta.badge": { it: "Prenotazioni aperte", en: "Now booking" },
   "cta.title": { it: "Pronto a far crescere il tuo brand?", en: "Ready to elevate your brand?" },
   "cta.subtitle": {
     it: "Costruiamo qualcosa di grande insieme. Raccontaci il tuo progetto e ti rispondiamo entro un giorno lavorativo.",
