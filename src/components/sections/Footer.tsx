@@ -52,7 +52,7 @@ export const Footer = () => {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5 text-primary shrink-0" />
-                <a href="mailto:contattiflowstudio@gmail.com" className="hover:text-foreground transition-colors">contattiflowstudio@gmail.com</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contattiflowstudio@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">contattiflowstudio@gmail.com</a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-3.5 w-3.5 text-primary shrink-0" />
