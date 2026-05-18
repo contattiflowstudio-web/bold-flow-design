@@ -83,12 +83,12 @@ export const Portfolio = () => {
                   </a>
                 </Button>
               </div>
-              <div className="order-1 md:order-2 relative aspect-[4/3] md:aspect-[5/4] rounded-2xl overflow-hidden">
+              <div className="order-1 md:order-2 relative aspect-[4/3] md:aspect-[5/4] rounded-2xl overflow-hidden bg-background/50">
                 <img
                   src={projects[active].image}
                   alt={projects[active].title}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
             </div>
