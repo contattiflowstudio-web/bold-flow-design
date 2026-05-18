@@ -19,8 +19,8 @@ const dict = {
   "hero.word.3": { it: "Crescono", en: "Scale" },
   "hero.word.4": { it: "Spiccano", en: "Stand Out" },
   "hero.subtitle": {
-    it: "Web design, gestione social e marketing digitale —\n tutto in un unico studio.",
-    en: "Web design, social media management and digital marketing —\n all in one studio.",
+    it: "Web design, gestione social e marketing digitale.\nTutto in un unico studio.",
+    en: "Web design, social media management and digital marketing.\nAll in one studio.",
   },
   "hero.cta.primary": { it: "Vedi i nostri lavori", en: "See Our Work" },
   "hero.cta.secondary": { it: "Parliamone", en: "Talk to Us" },
