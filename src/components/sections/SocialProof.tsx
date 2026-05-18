@@ -1,16 +1,13 @@
 import { Star } from "lucide-react";
-import a1 from "@/assets/avatar-1.jpg";
-import a2 from "@/assets/avatar-2.jpg";
-import a3 from "@/assets/avatar-3.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
 const logos = ["IRONCLAD", "LA DOLCE VITA", "PULSE/09", "SOTTO LE STELLE"];
 
-const testimonialDefs: { name: string; roleKey: TranslationKey; quoteKey: TranslationKey; avatar: string }[] = [
-  { name: "Maya Chen", roleKey: "social.t1.role", quoteKey: "social.t1.quote", avatar: a1 },
-  { name: "Daniel Rivera", roleKey: "social.t2.role", quoteKey: "social.t2.quote", avatar: a2 },
-  { name: "Sophie Laurent", roleKey: "social.t3.role", quoteKey: "social.t3.quote", avatar: a3 },
+const testimonialDefs: { name: string; roleKey: TranslationKey; quoteKey: TranslationKey }[] = [
+  { name: "Marco Rinaldi", roleKey: "social.t1.role", quoteKey: "social.t1.quote" },
+  { name: "Giulia Conti", roleKey: "social.t2.role", quoteKey: "social.t2.quote" },
+  { name: "Alessandro Ferri", roleKey: "social.t3.role", quoteKey: "social.t3.quote" },
 ];
 
 export const SocialProof = () => {
