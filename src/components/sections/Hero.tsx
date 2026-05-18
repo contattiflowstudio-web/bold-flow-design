@@ -54,7 +54,10 @@ export const Hero = () => {
           </span>
         </h1>
 
-        <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "150ms", opacity: 0 }}>
+        <p 
+          className="mt-8 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up md:text-6xl whitespace-pre-line" 
+          style={{ animationDelay: "150ms", opacity: 0 }}
+        >
           {t("hero.subtitle")}
         </p>
 
