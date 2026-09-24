@@ -6,27 +6,33 @@ import pulse09 from "@/assets/work-pulse09.png";
 import ironclad from "@/assets/work-ironclad.png";
 import sottoLeStelle from "@/assets/work-sotto-le-stelle.png";
 import ivanoSite from "@/assets/work-ivano.png";
+import oraPoesieLogo from "@/assets/ora-poesie-logo.png.asset.json";
+import rafStatueLogo from "@/assets/raf-statue-logo.png.asset.json";
+import dolceVitaLogo from "@/assets/logo-dolce-vita.png";
+import pulse09Logo from "@/assets/logo-pulse09.png";
+import ironcladLogo from "@/assets/logo-ironclad.png";
+import sottoLeStelleLogo from "@/assets/logo-sotto-le-stelle.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
 type Project = {
   title: string;
   mark: string;
+  logo: string;
   image?: string;
   tag: TranslationKey;
   desc: TranslationKey;
   url: string;
   services: TranslationKey[];
-  markClass?: string;
 };
 
 const projects: Project[] = [
-  { title: "Ivano Bersini · Ora Poesie", mark: "ORA / POESIE", image: ivanoSite, tag: "portfolio.tag.culture", desc: "portfolio.desc.ivano", url: "https://ivanobersiniorapoesie.com/", services: ["portfolio.service.web", "portfolio.service.editorial", "portfolio.service.identity"], markClass: "font-serif italic" },
-  { title: "La Dolce Vita", mark: "LA DOLCE VITA", image: dolceVita, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.dolceVita", url: "https://contattiflowstudio-web.github.io/gelateria/", services: ["portfolio.service.web", "portfolio.service.identity", "portfolio.service.booking"] },
-  { title: "PULSE/09", mark: "PULSE/09", image: pulse09, tag: "portfolio.tag.launch", desc: "portfolio.desc.pulse09", url: "https://contattiflowstudio-web.github.io/pulse09/", services: ["portfolio.service.landing", "portfolio.service.motion", "portfolio.service.conversion"], markClass: "font-mono" },
-  { title: "IRONCLAD", mark: "IRONCLAD", image: ironclad, tag: "portfolio.tag.brand", desc: "portfolio.desc.ironclad", url: "https://contattiflowstudio-web.github.io/Ironclad/", services: ["portfolio.service.web", "portfolio.service.identity", "portfolio.service.ux"] },
-  { title: "Sotto le Stelle", mark: "SOTTO LE STELLE", image: sottoLeStelle, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.sottoLeStelle", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/", services: ["portfolio.service.web", "portfolio.service.gallery", "portfolio.service.booking"] },
-  { title: "RAF Statue", mark: "RAF STATUE", tag: "portfolio.tag.social", desc: "portfolio.desc.raf", url: "https://www.instagram.com/rafstatue/", services: ["portfolio.service.social", "portfolio.service.content", "portfolio.service.strategy"] },
+  { title: "Ivano Bersini · Ora Poesie", mark: "Ora Poesie", logo: oraPoesieLogo.url, image: ivanoSite, tag: "portfolio.tag.culture", desc: "portfolio.desc.ivano", url: "https://ivanobersiniorapoesie.com/", services: ["portfolio.service.web", "portfolio.service.editorial", "portfolio.service.identity"] },
+  { title: "La Dolce Vita", mark: "La Dolce Vita", logo: dolceVitaLogo, image: dolceVita, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.dolceVita", url: "https://contattiflowstudio-web.github.io/gelateria/", services: ["portfolio.service.web", "portfolio.service.identity", "portfolio.service.booking"] },
+  { title: "PULSE/09", mark: "PULSE/09", logo: pulse09Logo, image: pulse09, tag: "portfolio.tag.launch", desc: "portfolio.desc.pulse09", url: "https://contattiflowstudio-web.github.io/pulse09/", services: ["portfolio.service.landing", "portfolio.service.motion", "portfolio.service.conversion"] },
+  { title: "IRONCLAD", mark: "IRONCLAD", logo: ironcladLogo, image: ironclad, tag: "portfolio.tag.brand", desc: "portfolio.desc.ironclad", url: "https://contattiflowstudio-web.github.io/Ironclad/", services: ["portfolio.service.web", "portfolio.service.identity", "portfolio.service.ux"] },
+  { title: "Sotto le Stelle", mark: "Sotto le Stelle", logo: sottoLeStelleLogo, image: sottoLeStelle, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.sottoLeStelle", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/", services: ["portfolio.service.web", "portfolio.service.gallery", "portfolio.service.booking"] },
+  { title: "RAF Statue", mark: "RAF Statue", logo: rafStatueLogo.url, tag: "portfolio.tag.social", desc: "portfolio.desc.raf", url: "https://www.instagram.com/rafstatue/", services: ["portfolio.service.social", "portfolio.service.content", "portfolio.service.strategy"] },
 ];
 
 export const Portfolio = () => {
@@ -48,7 +54,7 @@ export const Portfolio = () => {
                   aria-label={`${t("portfolio.viewProject")}: ${project.title}`}
                 >
                   <span className="font-mono text-[10px] text-muted-foreground">CLIENT.{String(index + 1).padStart(2, "0")}</span>
-                  <span className={`max-w-full whitespace-normal text-center text-lg leading-tight md:text-2xl ${project.markClass ?? "font-display"}`}>{project.mark}</span>
+                  <img src={project.logo} alt={project.mark} loading="lazy" width={1024} height={768} className="h-20 w-full object-contain md:h-28" />
                   <span className="inline-flex items-center gap-1 text-xs uppercase text-primary-glow">{t("portfolio.viewProject")} <ArrowUpRight className="h-3.5 w-3.5" /></span>
                 </Button>
               </DialogTrigger>
@@ -59,8 +65,8 @@ export const Portfolio = () => {
                       <img src={project.image} alt={project.title} className="max-h-[34rem] w-full rounded-md object-contain" />
                     ) : (
                       <div className="flex flex-col items-center text-center">
-                        <Instagram className="h-16 w-16 text-primary-glow" />
-                        <span className="mt-5 font-display text-3xl">@rafstatue</span>
+                        <img src={project.logo} alt={project.mark} loading="lazy" width={1024} height={768} className="max-h-72 w-full object-contain" />
+                        <span className="mt-5 inline-flex items-center gap-2 font-display text-xl"><Instagram className="h-5 w-5 text-primary-glow" />@rafstatue</span>
                       </div>
                     )}
                   </div>
