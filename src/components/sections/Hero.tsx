@@ -1,94 +1,68 @@
+import { ArrowDownRight, ArrowRight, Cloud, ShieldCheck, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Star } from "lucide-react";
-import heroMesh from "@/assets/hero-mesh.jpg";
-import { HeroVisual } from "@/components/HeroVisual";
-import { HeroScene } from "@/components/HeroScene";
+import logoAsset from "@/assets/flow-studio-logo.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export const Hero = () => {
   const { t } = useLanguage();
-  const rotatingWords = [
-    t("hero.word.1"),
-    t("hero.word.2"),
-    t("hero.word.3"),
-    t("hero.word.4"),
-  ];
+
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-noise"
-    >
-      {/* Mesh gradient + grid background */}
-      <div className="absolute inset-0 mesh-bg" />
-      <div className="absolute inset-0 bg-grid opacity-60" />
-      <img
-        src={heroMesh}
-        alt=""
-        aria-hidden="true"
-        width={1920}
-        height={1280}
-        className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/20 to-background" />
-
-      {/* Animated visual: parallax orbs, flow paths, floating chips, stars */}
-      <HeroVisual />
-
-      {/* 3D animated abstract object */}
-      <HeroScene />
-
-      <div className="container relative z-10 pt-32 pb-20 text-center">
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-[1.05] max-w-4xl mx-auto animate-fade-in-up tracking-tighter">
-          {t("hero.title.line1")}<br />
-          {t("hero.title.line2")}<br />
-          {t("hero.title.line3") && <>{t("hero.title.line3")}{" "}</>}
-          <span className="relative inline-flex items-baseline">
-            <span className="relative h-[1em] overflow-hidden align-baseline">
-              <span className="flex flex-col text-gradient" style={{ animation: "tick 8s ease-in-out infinite" }}>
-                {rotatingWords.map((w) => (
-                  <span key={w} className="block leading-[1]">{w}.</span>
-                ))}
-                <span className="block leading-[1] text-gradient">{rotatingWords[0]}.</span>
-              </span>
-            </span>
-          </span>
-        </h1>
-
-        <p
-          className="mt-8 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up whitespace-pre-line md:text-2xl text-center font-normal"
-          style={{ animationDelay: "150ms", opacity: 0 }}
-        >
-          {t("hero.subtitle")}
-        </p>
-
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "300ms", opacity: 0 }}>
-          <Button size="xl" className="group bg-white text-primary hover:bg-white/90 shadow-elegant" asChild>
-            <a href="#portfolio">
-              <Sparkles className="h-5 w-5" />
-              {t("hero.cta.primary")}
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </a>
-          </Button>
-          <Button size="xl" className="bg-white text-primary hover:bg-white/90 shadow-elegant" asChild>
-            <a href="#contact">{t("hero.cta.secondary")}</a>
-          </Button>
-        </div>
-
-        {/* Stats strip */}
-        <div className="mt-20 grid grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: "450ms", opacity: 0 }}>
-          {[
-            { k: t("hero.stat.1.k"), v: t("hero.stat.1.v") },
-            { k: t("hero.stat.2.k"), v: t("hero.stat.2.v") },
-            { k: t("hero.stat.3.k"), v: t("hero.stat.3.v") },
-          ].map((s) => (
-            <div key={s.v} className="glass rounded-2xl p-5 hover:shadow-glow-soft hover:-translate-y-1 transition-all duration-500">
-              <div className="font-display text-2xl sm:text-3xl font-bold text-gradient-primary">{s.k}</div>
-              <div className="text-xs sm:text-sm text-muted-foreground mt-1">{s.v}</div>
+    <section id="home" className="relative overflow-hidden pt-28 pb-8 md:pt-32 md:pb-12">
+      <div className="absolute inset-0 technical-grid opacity-50" aria-hidden="true" />
+      <div className="container relative">
+        <div className="grid gap-3 lg:grid-cols-12 lg:auto-rows-[minmax(9rem,auto)]">
+          <article className="reveal relative overflow-hidden rounded-lg border border-primary/30 bg-card/80 p-7 md:p-10 lg:col-span-8 lg:row-span-2">
+            <div className="absolute inset-y-0 right-0 w-1/2 blueprint-lines opacity-50" aria-hidden="true" />
+            <div className="relative flex min-h-[28rem] flex-col justify-between">
+              <div>
+                <p className="eyebrow">Flow Studio · Web & Cyber</p>
+                <h1 className="mt-7 max-w-4xl font-display text-4xl leading-[1.04] sm:text-5xl md:text-7xl">
+                  {t("hero.title.line1")}<br />
+                  <span className="text-primary-glow">{t("hero.title.line2")}</span>
+                </h1>
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                  {t("hero.subtitle")}
+                </p>
+              </div>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <Button size="xl" asChild>
+                  <Link to="/contact">{t("hero.cta.secondary")}<ArrowRight /></Link>
+                </Button>
+                <Button size="xl" variant="outline" asChild>
+                  <a href="#portfolio">{t("hero.cta.primary")}<ArrowDownRight /></a>
+                </Button>
+              </div>
             </div>
-          ))}
+          </article>
+
+          <article className="reveal relative flex min-h-[22rem] items-center justify-center overflow-hidden rounded-lg bg-primary p-8 lg:col-span-4 lg:row-span-2">
+            <div className="absolute inset-0 logo-grid opacity-20" aria-hidden="true" />
+            <div className="relative text-center">
+              <img src={logoAsset.url} alt="Flow Studio" className="mx-auto w-full max-w-[18rem] mix-blend-screen" />
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-primary-foreground/75">
+                {t("hero.brandline")}
+              </p>
+            </div>
+          </article>
+
+          <article className="reveal bento-panel group lg:col-span-4">
+            <ShieldCheck className="h-8 w-8 text-primary-glow" />
+            <p className="mt-8 text-xs uppercase tracking-[0.18em] text-muted-foreground">01 / Security</p>
+            <h2 className="mt-2 font-display text-xl">{t("hero.tile.security")}</h2>
+          </article>
+          <article className="reveal bento-panel group lg:col-span-4">
+            <Cloud className="h-8 w-8 text-primary-glow" />
+            <p className="mt-8 text-xs uppercase tracking-[0.18em] text-muted-foreground">02 / Cloud</p>
+            <h2 className="mt-2 font-display text-xl">{t("hero.tile.cloud")}</h2>
+          </article>
+          <article className="reveal bento-panel group border-primary/40 bg-primary/10 lg:col-span-4">
+            <Sparkles className="h-8 w-8 text-primary-glow" />
+            <p className="mt-8 text-xs uppercase tracking-[0.18em] text-muted-foreground">03 / Growth</p>
+            <h2 className="mt-2 font-display text-xl">{t("hero.tile.growth")}</h2>
+          </article>
         </div>
       </div>
-
     </section>
   );
 };
