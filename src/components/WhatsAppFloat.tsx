@@ -13,10 +13,9 @@ export const WhatsAppFloat = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-elegant hover:scale-110 hover:shadow-glow-soft transition-all duration-300 animate-fade-in"
+      className="fixed bottom-5 right-5 z-50 inline-flex h-12 w-12 items-center justify-center rounded-md border border-primary-glow/40 bg-primary text-primary-foreground shadow-elegant hover:-translate-y-1 transition-all duration-300 animate-fade-in"
     >
       <WhatsAppIcon className="h-7 w-7" />
-      <span className="absolute inset-0 rounded-full bg-primary opacity-50 animate-ping" />
     </a>
   );
 };
