@@ -1,132 +1,50 @@
-import { useEffect, useState } from "react";
+import { ArrowUpRight, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import dolceVita from "@/assets/work-dolce-vita.png";
 import pulse09 from "@/assets/work-pulse09.png";
 import ironclad from "@/assets/work-ironclad.png";
 import sottoLeStelle from "@/assets/work-sotto-le-stelle.png";
+import ivanoAsset from "@/assets/ivano-obersini-site.jpg.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
-type Project = {
-  title: string;
-  image: string;
-  tagKey: TranslationKey;
-  descKey: TranslationKey;
-  url: string;
-};
-
-const projects: Project[] = [
-  { title: "La Dolce Vita", image: dolceVita, tagKey: "portfolio.tag.hospitality", descKey: "portfolio.desc.dolceVita", url: "https://contattiflowstudio-web.github.io/gelateria/" },
-  { title: "PULSE/09", image: pulse09, tagKey: "portfolio.tag.launch", descKey: "portfolio.desc.pulse09", url: "https://contattiflowstudio-web.github.io/pulse09/" },
-  { title: "IRONCLAD", image: ironclad, tagKey: "portfolio.tag.brand", descKey: "portfolio.desc.ironclad", url: "https://contattiflowstudio-web.github.io/Ironclad/" },
-  { title: "Sotto le Stelle", image: sottoLeStelle, tagKey: "portfolio.tag.hospitality", descKey: "portfolio.desc.sottoLeStelle", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/" },
+const projects: { title: string; image?: string; tag: TranslationKey; desc: TranslationKey; url: string; featured?: boolean; social?: boolean }[] = [
+  { title: "Ivano Bersini · Ora Poesie", image: ivanoAsset.url, tag: "portfolio.tag.culture", desc: "portfolio.desc.ivano", url: "https://ivanobersiniorapoesie.com/", featured: true },
+  { title: "La Dolce Vita", image: dolceVita, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.dolceVita", url: "https://contattiflowstudio-web.github.io/gelateria/" },
+  { title: "PULSE/09", image: pulse09, tag: "portfolio.tag.launch", desc: "portfolio.desc.pulse09", url: "https://contattiflowstudio-web.github.io/pulse09/" },
+  { title: "IRONCLAD", image: ironclad, tag: "portfolio.tag.brand", desc: "portfolio.desc.ironclad", url: "https://contattiflowstudio-web.github.io/Ironclad/" },
+  { title: "Sotto le Stelle", image: sottoLeStelle, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.sottoLeStelle", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/" },
+  { title: "RAF Statue", tag: "portfolio.tag.social", desc: "portfolio.desc.raf", url: "https://www.instagram.com/rafstatue/", social: true },
 ];
 
 export const Portfolio = () => {
   const { t } = useLanguage();
-  const [active, setActive] = useState(0);
-  const total = projects.length;
-
-  const go = (dir: number) => {
-    setActive((prev) => (prev + dir + total) % total);
-  };
-
-  // Auto-advance projects every 7s (slower)
-  useEffect(() => {
-    const id = setInterval(() => {
-      setActive((prev) => (prev + 1) % total);
-    }, 7000);
-    return () => clearInterval(id);
-  }, [total]);
-
   return (
-    <section id="portfolio" className="relative py-28 md:py-36 overflow-hidden">
+    <section id="portfolio" className="section-space border-t border-border bg-secondary/20">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
-          <div className="max-w-2xl">
-            <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary-glow mb-4">
-              {t("portfolio.eyebrow")}
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              {t("portfolio.title.a")}
-              <span className="text-gradient">{t("portfolio.title.b")}</span>
-            </h2>
-          </div>
+        <div className="section-heading reveal">
+          <div><p className="eyebrow">{t("portfolio.eyebrow")}</p><p className="section-index">03 — Selected work</p></div>
+          <div className="max-w-3xl"><h2 className="font-display text-4xl leading-tight md:text-6xl">{t("portfolio.title")}</h2><p className="mt-5 text-lg text-muted-foreground">{t("portfolio.intro")}</p></div>
         </div>
-
-        <div className="relative">
-          {/* Editorial slide: text beside a smaller image */}
-          <div
-            key={projects[active].title}
-            className="mx-auto max-w-6xl rounded-3xl glass shadow-elegant p-6 md:p-10 animate-fade-in"
-          >
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              <div className="order-2 md:order-1 text-center md:text-left">
-                <p className="text-xs uppercase tracking-[0.2em] text-primary-glow mb-4">
-                  {t(projects[active].tagKey)}
-                </p>
-                <h3 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-5">
-                  {projects[active].title}
-                </h3>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-7 max-w-md mx-auto md:mx-0">
-                  {t(projects[active].descKey)}
-                </p>
-                <Button
-                  size="lg"
-                  className="bg-white text-primary hover:bg-white/90 shadow-elegant"
-                  asChild
-                >
-                  <a href={projects[active].url} target="_blank" rel="noopener noreferrer">
-                    {t("portfolio.viewProject")}
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-              <div className="order-1 md:order-2 flex items-center justify-center">
-                <img
-                  src={projects[active].image}
-                  alt={projects[active].title}
-                  loading="lazy"
-                  className="w-full h-auto max-h-[70vh] object-contain rounded-2xl"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Project nav arrows */}
-          <button
-            type="button"
-            onClick={() => go(-1)}
-            aria-label="Previous project"
-            className="absolute left-2 md:-left-4 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full glass-strong inline-flex items-center justify-center hover:bg-background/80 hover:scale-110 transition-all duration-300"
-          >
-            <ChevronLeft className="h-5 w-5 text-foreground" />
-          </button>
-          <button
-            type="button"
-            onClick={() => go(1)}
-            aria-label="Next project"
-            className="absolute right-2 md:-right-4 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full glass-strong inline-flex items-center justify-center hover:bg-background/80 hover:scale-110 transition-all duration-300"
-          >
-            <ChevronRight className="h-5 w-5 text-foreground" />
-          </button>
-
-          {/* Project dots */}
-          <div className="mt-8 flex items-center justify-center gap-2">
-            {projects.map((p, i) => (
-              <button
-                key={p.title}
-                type="button"
-                onClick={() => setActive(i)}
-                aria-label={`Go to ${p.title}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === active ? "w-8 bg-primary" : "w-2 bg-foreground/20 hover:bg-foreground/40"
-                }`}
-              />
-            ))}
-          </div>
+        <div className="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-12">
+          {projects.map((project, index) => (
+            <article key={project.title} className={`reveal project-card group ${project.featured ? "lg:col-span-8" : index === 5 ? "lg:col-span-4" : "lg:col-span-6"}`}>
+              <a href={project.url} target="_blank" rel="noopener noreferrer" className="block h-full">
+                <div className={`relative flex min-h-[19rem] items-center justify-center overflow-hidden bg-card ${project.featured ? "md:min-h-[30rem]" : "md:min-h-[24rem]"}`}>
+                  {project.image ? <img src={project.image} alt={project.title} loading="lazy" className="max-h-[29rem] w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" /> : (
+                    <div className="flex flex-col items-center text-center"><Instagram className="h-16 w-16 text-primary-glow" /><span className="mt-5 font-display text-3xl">@rafstatue</span><span className="mt-2 text-sm uppercase tracking-[0.18em] text-muted-foreground">Social media management</span></div>
+                  )}
+                  <span className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background/80 text-foreground backdrop-blur-md"><ArrowUpRight className="h-5 w-5" /></span>
+                </div>
+                <div className="grid gap-3 border-t border-border p-5 md:grid-cols-[1fr_auto] md:items-end">
+                  <div><p className="text-xs uppercase tracking-[0.18em] text-primary-glow">{t(project.tag)}</p><h3 className="mt-2 font-display text-xl md:text-2xl">{project.title}</h3><p className="mt-3 max-w-xl text-sm text-muted-foreground">{t(project.desc)}</p></div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground">{t("portfolio.viewProject")}</span>
+                </div>
+              </a>
+            </article>
+          ))}
         </div>
+        <div className="mt-8 text-center"><Button variant="outline" asChild><a href="https://www.instagram.com/igflowstudio" target="_blank" rel="noopener noreferrer">Instagram Flow Studio <ArrowUpRight /></a></Button></div>
       </div>
     </section>
   );

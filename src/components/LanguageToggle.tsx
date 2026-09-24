@@ -31,7 +31,7 @@ export const LanguageToggle = ({ className, variant = "auto" }: Props) => {
       role="group"
       aria-label="Language switcher"
       className={cn(
-        "inline-flex items-center rounded-full border border-border/60 bg-background/40 backdrop-blur-md p-0.5 text-xs",
+        "inline-flex items-center rounded-md border border-border bg-card p-0.5 text-xs",
         className
       )}
     >
@@ -45,9 +45,9 @@ export const LanguageToggle = ({ className, variant = "auto" }: Props) => {
             aria-pressed={isActive}
             aria-label={`Switch to ${code === "it" ? "Italian" : "English"}`}
             className={cn(
-              "px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider transition-all",
+              "px-2.5 py-1 rounded-sm font-semibold uppercase tracking-wider transition-all",
               isActive
-                ? "bg-white text-primary shadow-elegant"
+                ? "bg-primary text-primary-foreground"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
@@ -63,7 +63,7 @@ export const LanguageToggle = ({ className, variant = "auto" }: Props) => {
       <DropdownMenuTrigger
         aria-label={`Current language: ${active.label}. Change language`}
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-full bg-white text-primary hover:bg-white/90 shadow-elegant px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+          "inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
           className
         )}
       >

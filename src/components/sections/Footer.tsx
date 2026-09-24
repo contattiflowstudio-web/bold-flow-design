@@ -1,92 +1,25 @@
-import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/flow-logo.png";
+import flowLogo from "@/assets/flow-studio-brand.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useIsMobile } from "@/hooks/use-mobile";
+
+const socials = [
+  { Icon: Instagram, href: "https://www.instagram.com/igflowstudio", label: "Instagram" },
+  { Icon: Linkedin, href: "https://www.linkedin.com/in/flowstudio", label: "LinkedIn" },
+  { Icon: MessageCircle, href: "https://wa.me/393520017088", label: "WhatsApp" },
+];
 
 export const Footer = () => {
   const { t } = useLanguage();
-  const isMobile = useIsMobile();
-  const phoneHref = isMobile ? "https://wa.me/393520017088" : "tel:+393520017088";
-  const phoneProps = isMobile
-    ? { target: "_blank", rel: "noopener noreferrer" as const }
-    : {};
   return (
-    <footer className="relative border-t border-border/50 pt-16 pb-8">
+    <footer className="border-t border-border bg-card/40 py-12">
       <div className="container">
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
-          <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="inline-flex h-10 w-10 items-center justify-center">
-                <img
-                  src={logo}
-                  alt="Flow Studio logo"
-                  width={40}
-                  height={40}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-contain drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
-                />
-              </span>
-              <span className="font-display text-xl font-bold">
-                Flow <span className="text-gradient-primary">Studio</span>
-              </span>
-            </Link>
-            <p className="mt-4 text-muted-foreground max-w-sm">
-              {t("footer.tagline")}
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-display font-semibold mb-4">{t("footer.studio")}</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/services" className="hover:text-foreground transition-colors">{t("nav.services")}</Link></li>
-              <li><Link to="/why-digital" className="hover:text-foreground transition-colors">{t("nav.whyDigital")}</Link></li>
-              <li><Link to="/portfolio" className="hover:text-foreground transition-colors">{t("nav.portfolio")}</Link></li>
-              <li><Link to="/contact" className="hover:text-foreground transition-colors">{t("nav.contact")}</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-display font-semibold mb-4">{t("footer.contact")}</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <Mail className="h-3.5 w-3.5 text-primary shrink-0" />
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contattiflowstudio@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">contattiflowstudio@gmail.com</a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-3.5 w-3.5 text-primary shrink-0" />
-                <a href={phoneHref} {...phoneProps} className="hover:text-foreground transition-colors">352 001 7088</a>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />
-                <span>{t("footer.location")}</span>
-              </li>
-            </ul>
-            <div className="mt-5 flex items-center gap-3">
-              {[
-                { Icon: Instagram, href: "https://www.instagram.com/igflowstudio", label: "Instagram" },
-                { Icon: Linkedin, href: "https://www.linkedin.com/in/flowstudio", label: "LinkedIn" },
-              ].map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="h-10 w-10 inline-flex items-center justify-center rounded-xl glass hover:shadow-glow-soft hover:-translate-y-0.5 transition-all"
-                >
-                  <Icon className="h-4 w-4 text-foreground" />
-                </a>
-              ))}
-            </div>
-          </div>
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5"><Link to="/" className="inline-flex items-center gap-4"><img src={flowLogo} alt="Flow Studio" className="h-16 w-16 rounded-md object-cover object-left" /><span className="font-display text-xl">Flow Studio</span></Link><p className="mt-5 max-w-md text-muted-foreground">{t("footer.tagline")}</p></div>
+          <div className="lg:col-span-3"><p className="eyebrow">{t("footer.studio")}</p><div className="mt-5 grid gap-3 text-sm"><Link to="/services">{t("nav.services")}</Link><Link to="/why-digital">{t("nav.whyDigital")}</Link><Link to="/portfolio">{t("nav.portfolio")}</Link><Link to="/contact">{t("nav.contact")}</Link></div></div>
+          <div className="lg:col-span-4"><p className="eyebrow">{t("footer.contact")}</p><div className="mt-5 grid gap-3 text-sm text-muted-foreground"><a className="flex items-center gap-3 hover:text-foreground" href="https://mail.google.com/mail/?view=cm&fs=1&to=contattiflowstudio@gmail.com" target="_blank" rel="noopener noreferrer"><Mail className="h-4 w-4 text-primary-glow" />contattiflowstudio@gmail.com</a><a className="flex items-center gap-3 hover:text-foreground" href="https://wa.me/393520017088" target="_blank" rel="noopener noreferrer"><Phone className="h-4 w-4 text-primary-glow" />+39 352 001 7088</a></div><div className="mt-6 flex gap-2">{socials.map(({ Icon, href, label }) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border hover:border-primary"><Icon className="h-4 w-4" /></a>)}</div></div>
         </div>
-
-        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>{t("footer.copyright")}</p>
-          <p>{t("footer.crafted")}</p>
-        </div>
+        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:justify-between"><p>{t("footer.copyright")}</p><p>{t("footer.crafted")}</p></div>
       </div>
     </footer>
   );
