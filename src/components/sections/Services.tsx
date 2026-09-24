@@ -1,4 +1,4 @@
-import { Cloud, Code2, Database, Link2, LockKeyhole, ShoppingBag, Smartphone, TrendingUp } from "lucide-react";
+import { Cloud, Code2, Database, Gauge, Link2, LockKeyhole, ShoppingBag, Smartphone, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
@@ -9,6 +9,7 @@ const services: { icon: typeof Cloud; title: TranslationKey; desc: TranslationKe
   { icon: Database, title: "services.backend.title", desc: "services.backend.desc", code: "DEV" },
   { icon: Link2, title: "services.connectors.title", desc: "services.connectors.desc", code: "API" },
   { icon: ShoppingBag, title: "services.commerce.title", desc: "services.commerce.desc", code: "ECM" },
+  { icon: Gauge, title: "services.optimization.title", desc: "services.optimization.desc", code: "OPT" },
   { icon: Smartphone, title: "services.social.title", desc: "services.social.desc", code: "SOC" },
   { icon: TrendingUp, title: "services.strategy.title", desc: "services.strategy.desc", code: "GRW" },
 ];
