@@ -3,9 +3,9 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
 const reviews: { name: string; quote: TranslationKey }[] = [
-  { name: "Marco Rinaldi", quote: "social.t1.quote" },
-  { name: "Giulia Conti", quote: "social.t2.quote" },
-  { name: "Alessandro Ferri", quote: "social.t3.quote" },
+  { name: "Ivano Bersini", quote: "social.t1.quote" },
+  { name: "Carla Biuso", quote: "social.t2.quote" },
+  { name: "Marco Rinaldi", quote: "social.t3.quote" },
 ];
 
 export const SocialProof = () => {
