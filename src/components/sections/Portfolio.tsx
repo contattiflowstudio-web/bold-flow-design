@@ -6,8 +6,8 @@ import pulse09 from "@/assets/work-pulse09.png";
 import ironclad from "@/assets/work-ironclad.png";
 import sottoLeStelle from "@/assets/work-sotto-le-stelle.png";
 import ivanoSite from "@/assets/work-ivano.png";
-import oraPoesieLogo from "@/assets/ora-poesie-logo.png.asset.json";
-import rafStatueLogo from "@/assets/raf-statue-logo.png.asset.json";
+import oraPoesieLogo from "@/assets/ora-poesie-logo.png";
+import rafStatueLogo from "@/assets/raf-statue-logo.png";
 import dolceVitaLogo from "@/assets/logo-dolce-vita.png";
 import pulse09Logo from "@/assets/logo-pulse09.png";
 import ironcladLogo from "@/assets/logo-ironclad.png";
@@ -27,12 +27,12 @@ type Project = {
 };
 
 const projects: Project[] = [
-  { title: "Ivano Bersini · Ora Poesie", mark: "Ora Poesie", logo: oraPoesieLogo.url, image: ivanoSite, tag: "portfolio.tag.culture", desc: "portfolio.desc.ivano", url: "https://ivanobersiniorapoesie.com/", services: ["portfolio.service.web", "portfolio.service.editorial", "portfolio.service.identity"] },
+  { title: "Ivano Bersini · Ora Poesie", mark: "Ora Poesie", logo: oraPoesieLogo, image: ivanoSite, tag: "portfolio.tag.culture", desc: "portfolio.desc.ivano", url: "https://ivanobersiniorapoesie.com/", services: ["portfolio.service.web", "portfolio.service.editorial", "portfolio.service.identity"] },
   { title: "La Dolce Vita", mark: "La Dolce Vita", logo: dolceVitaLogo, image: dolceVita, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.dolceVita", url: "https://contattiflowstudio-web.github.io/gelateria/", services: ["portfolio.service.web", "portfolio.service.identity", "portfolio.service.booking"] },
   { title: "PULSE/09", mark: "PULSE/09", logo: pulse09Logo, image: pulse09, tag: "portfolio.tag.launch", desc: "portfolio.desc.pulse09", url: "https://contattiflowstudio-web.github.io/pulse09/", services: ["portfolio.service.landing", "portfolio.service.motion", "portfolio.service.conversion"] },
   { title: "IRONCLAD", mark: "IRONCLAD", logo: ironcladLogo, image: ironclad, tag: "portfolio.tag.brand", desc: "portfolio.desc.ironclad", url: "https://contattiflowstudio-web.github.io/Ironclad/", services: ["portfolio.service.web", "portfolio.service.identity", "portfolio.service.ux"] },
   { title: "Sotto le Stelle", mark: "Sotto le Stelle", logo: sottoLeStelleLogo, image: sottoLeStelle, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.sottoLeStelle", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/", services: ["portfolio.service.web", "portfolio.service.gallery", "portfolio.service.booking"] },
-  { title: "RAF Statue", mark: "RAF Statue", logo: rafStatueLogo.url, tag: "portfolio.tag.social", desc: "portfolio.desc.raf", url: "https://www.instagram.com/rafstatue/", services: ["portfolio.service.social", "portfolio.service.content", "portfolio.service.strategy"] },
+  { title: "RAF Statue", mark: "RAF Statue", logo: rafStatueLogo, tag: "portfolio.tag.social", desc: "portfolio.desc.raf", url: "https://www.instagram.com/rafstatue/", services: ["portfolio.service.social", "portfolio.service.content", "portfolio.service.strategy"] },
 ];
 
 export const Portfolio = () => {
