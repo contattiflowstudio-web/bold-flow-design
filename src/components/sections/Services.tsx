@@ -29,7 +29,7 @@ export const Services = () => {
         </div>
         <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <article key={service.title} className={`reveal bento-panel min-h-[18rem] ${index === 0 || index === 5 || index === 9 ? "sm:col-span-2" : ""}`}>
+            <article key={service.title} className={`reveal bento-panel min-h-[18rem] ${index === 0 || index === 5 ? "sm:col-span-2" : ""}`}>
               <div className="flex items-center justify-between">
                 <service.icon className="h-8 w-8 text-primary-glow" />
                 <span className="font-mono text-xs text-muted-foreground">{service.code}.{String(index + 1).padStart(2, "0")}</span>
