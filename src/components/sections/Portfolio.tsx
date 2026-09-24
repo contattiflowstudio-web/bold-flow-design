@@ -1,5 +1,6 @@
 import { ArrowUpRight, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import dolceVita from "@/assets/work-dolce-vita.png";
 import pulse09 from "@/assets/work-pulse09.png";
 import ironclad from "@/assets/work-ironclad.png";
@@ -8,13 +9,24 @@ import ivanoAsset from "@/assets/ivano-obersini-site.jpg.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
-const projects: { title: string; image?: string; tag: TranslationKey; desc: TranslationKey; url: string; featured?: boolean; social?: boolean }[] = [
-  { title: "Ivano Bersini · Ora Poesie", image: ivanoAsset.url, tag: "portfolio.tag.culture", desc: "portfolio.desc.ivano", url: "https://ivanobersiniorapoesie.com/", featured: true },
-  { title: "La Dolce Vita", image: dolceVita, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.dolceVita", url: "https://contattiflowstudio-web.github.io/gelateria/" },
-  { title: "PULSE/09", image: pulse09, tag: "portfolio.tag.launch", desc: "portfolio.desc.pulse09", url: "https://contattiflowstudio-web.github.io/pulse09/" },
-  { title: "IRONCLAD", image: ironclad, tag: "portfolio.tag.brand", desc: "portfolio.desc.ironclad", url: "https://contattiflowstudio-web.github.io/Ironclad/" },
-  { title: "Sotto le Stelle", image: sottoLeStelle, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.sottoLeStelle", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/" },
-  { title: "RAF Statue", tag: "portfolio.tag.social", desc: "portfolio.desc.raf", url: "https://www.instagram.com/rafstatue/", social: true },
+type Project = {
+  title: string;
+  mark: string;
+  image?: string;
+  tag: TranslationKey;
+  desc: TranslationKey;
+  url: string;
+  services: TranslationKey[];
+  markClass?: string;
+};
+
+const projects: Project[] = [
+  { title: "Ivano Bersini · Ora Poesie", mark: "ORA / POESIE", image: ivanoAsset.url, tag: "portfolio.tag.culture", desc: "portfolio.desc.ivano", url: "https://ivanobersiniorapoesie.com/", services: ["portfolio.service.web", "portfolio.service.editorial", "portfolio.service.identity"], markClass: "font-serif italic" },
+  { title: "La Dolce Vita", mark: "LA DOLCE VITA", image: dolceVita, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.dolceVita", url: "https://contattiflowstudio-web.github.io/gelateria/", services: ["portfolio.service.web", "portfolio.service.identity", "portfolio.service.booking"] },
+  { title: "PULSE/09", mark: "PULSE/09", image: pulse09, tag: "portfolio.tag.launch", desc: "portfolio.desc.pulse09", url: "https://contattiflowstudio-web.github.io/pulse09/", services: ["portfolio.service.landing", "portfolio.service.motion", "portfolio.service.conversion"], markClass: "font-mono" },
+  { title: "IRONCLAD", mark: "IRONCLAD", image: ironclad, tag: "portfolio.tag.brand", desc: "portfolio.desc.ironclad", url: "https://contattiflowstudio-web.github.io/Ironclad/", services: ["portfolio.service.web", "portfolio.service.identity", "portfolio.service.ux"] },
+  { title: "Sotto le Stelle", mark: "SOTTO LE STELLE", image: sottoLeStelle, tag: "portfolio.tag.hospitality", desc: "portfolio.desc.sottoLeStelle", url: "https://contattiflowstudio-web.github.io/Sotto-le-stelle/", services: ["portfolio.service.web", "portfolio.service.gallery", "portfolio.service.booking"] },
+  { title: "RAF Statue", mark: "RAF STATUE", tag: "portfolio.tag.social", desc: "portfolio.desc.raf", url: "https://www.instagram.com/rafstatue/", services: ["portfolio.service.social", "portfolio.service.content", "portfolio.service.strategy"] },
 ];
 
 export const Portfolio = () => {
@@ -26,22 +38,51 @@ export const Portfolio = () => {
           <div><p className="eyebrow">{t("portfolio.eyebrow")}</p><p className="section-index">03 — Selected work</p></div>
           <div className="max-w-3xl"><h2 className="font-display text-4xl leading-tight md:text-6xl">{t("portfolio.title")}</h2><p className="mt-5 text-lg text-muted-foreground">{t("portfolio.intro")}</p></div>
         </div>
-        <div className="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-12">
+        <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3">
           {projects.map((project, index) => (
-            <article key={project.title} className={`reveal project-card group ${project.featured ? "lg:col-span-8" : index === 5 ? "lg:col-span-4" : "lg:col-span-6"}`}>
-              <a href={project.url} target="_blank" rel="noopener noreferrer" className="block h-full">
-                <div className={`relative flex min-h-[19rem] items-center justify-center overflow-hidden bg-card ${project.featured ? "md:min-h-[30rem]" : "md:min-h-[24rem]"}`}>
-                  {project.image ? <img src={project.image} alt={project.title} loading="lazy" className="max-h-[29rem] w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" /> : (
-                    <div className="flex flex-col items-center text-center"><Instagram className="h-16 w-16 text-primary-glow" /><span className="mt-5 font-display text-3xl">@rafstatue</span><span className="mt-2 text-sm uppercase tracking-[0.18em] text-muted-foreground">Social media management</span></div>
-                  )}
-                  <span className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background/80 text-foreground backdrop-blur-md"><ArrowUpRight className="h-5 w-5" /></span>
+            <Dialog key={project.title}>
+              <DialogTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="reveal group h-40 w-full flex-col gap-5 bg-card px-4 text-card-foreground hover:border-primary/60 hover:bg-card md:h-52"
+                  aria-label={`${t("portfolio.viewProject")}: ${project.title}`}
+                >
+                  <span className="font-mono text-[10px] text-muted-foreground">CLIENT.{String(index + 1).padStart(2, "0")}</span>
+                  <span className={`max-w-full whitespace-normal text-center text-lg leading-tight md:text-2xl ${project.markClass ?? "font-display"}`}>{project.mark}</span>
+                  <span className="inline-flex items-center gap-1 text-xs uppercase text-primary-glow">{t("portfolio.viewProject")} <ArrowUpRight className="h-3.5 w-3.5" /></span>
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-h-[92vh] max-w-5xl gap-0 overflow-y-auto p-0">
+                <div className="grid lg:grid-cols-[1.35fr_1fr]">
+                  <div className="flex min-h-64 items-center justify-center overflow-hidden bg-secondary/40 p-4 md:p-8 lg:min-h-[36rem]">
+                    {project.image ? (
+                      <img src={project.image} alt={project.title} className="max-h-[34rem] w-full rounded-md object-contain" />
+                    ) : (
+                      <div className="flex flex-col items-center text-center">
+                        <Instagram className="h-16 w-16 text-primary-glow" />
+                        <span className="mt-5 font-display text-3xl">@rafstatue</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-col p-6 md:p-8">
+                    <DialogHeader>
+                      <p className="text-xs uppercase text-primary-glow">{t(project.tag)}</p>
+                      <DialogTitle className="pt-3 font-display text-3xl leading-tight">{project.title}</DialogTitle>
+                      <DialogDescription className="pt-4 text-base leading-relaxed">{t(project.desc)}</DialogDescription>
+                    </DialogHeader>
+                    <div className="mt-8 border-t border-border pt-6">
+                      <p className="text-xs font-semibold uppercase text-foreground">{t("portfolio.servicesTitle")}</p>
+                      <ul className="mt-4 grid gap-3">
+                        {project.services.map((service) => <li key={service} className="flex items-center gap-3 text-sm text-muted-foreground"><span className="h-1.5 w-1.5 rounded-full bg-primary-glow" />{t(service)}</li>)}
+                      </ul>
+                    </div>
+                    <Button className="mt-8 w-full" size="lg" asChild>
+                      <a href={project.url} target="_blank" rel="noopener noreferrer">{t("portfolio.visitProject")} <ArrowUpRight /></a>
+                    </Button>
+                  </div>
                 </div>
-                <div className="grid gap-3 border-t border-border p-5 md:grid-cols-[1fr_auto] md:items-end">
-                  <div><p className="text-xs uppercase tracking-[0.18em] text-primary-glow">{t(project.tag)}</p><h3 className="mt-2 font-display text-xl md:text-2xl">{project.title}</h3><p className="mt-3 max-w-xl text-sm text-muted-foreground">{t(project.desc)}</p></div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground">{t("portfolio.viewProject")}</span>
-                </div>
-              </a>
-            </article>
+              </DialogContent>
+            </Dialog>
           ))}
         </div>
         <div className="mt-8 text-center"><Button variant="outline" asChild><a href="https://www.instagram.com/igflowstudio" target="_blank" rel="noopener noreferrer">Instagram Flow Studio <ArrowUpRight /></a></Button></div>

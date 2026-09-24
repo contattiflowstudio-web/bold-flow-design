@@ -6,6 +6,7 @@ import { WhyDigital } from "@/components/sections/WhyDigital";
 import { Process } from "@/components/sections/Process";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { SocialProof } from "@/components/sections/SocialProof";
+import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { CTA } from "@/components/sections/CTA";
 import { Footer } from "@/components/sections/Footer";
 import { useReveal } from "@/hooks/use-reveal";
@@ -23,6 +24,7 @@ const Index = () => {
         <Process />
         <Portfolio />
         <SocialProof />
+        <ServiceAreas />
         <CTA />
       </main>
       <Footer />
