@@ -1,7 +1,7 @@
 import { ArrowDownRight, ArrowRight, Cloud, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import logoAsset from "@/assets/flow-studio-logo.png.asset.json";
+import flowLogo from "@/assets/flow-studio-brand.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export const Hero = () => {
@@ -39,7 +39,7 @@ export const Hero = () => {
           <article className="reveal relative flex min-h-[22rem] items-center justify-center overflow-hidden rounded-lg bg-primary p-8 lg:col-span-4 lg:row-span-2">
             <div className="absolute inset-0 logo-grid opacity-20" aria-hidden="true" />
             <div className="relative text-center">
-              <img src={logoAsset.url} alt="Flow Studio" className="mx-auto w-full max-w-[18rem] mix-blend-screen" />
+              <img src={flowLogo} alt="Flow Studio" className="mx-auto w-full max-w-[18rem]" />
               <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-primary-foreground/75">
                 {t("hero.brandline")}
               </p>

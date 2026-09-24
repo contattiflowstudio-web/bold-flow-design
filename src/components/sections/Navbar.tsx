@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoAsset from "@/assets/flow-studio-logo.png.asset.json";
+import flowLogo from "@/assets/flow-studio-brand.webp";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { cn } from "@/lib/utils";
@@ -28,7 +28,7 @@ export const Navbar = () => {
     <header className={cn("fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all", scrolled && "border-border bg-background/90 backdrop-blur-xl")}>
       <div className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-3" aria-label="Flow Studio home">
-          <img src={logoAsset.url} alt="" className="h-11 w-11 rounded-md object-cover object-left" />
+          <img src={flowLogo} alt="" className="h-11 w-11 rounded-md object-cover object-left" />
           <span className="font-display text-sm uppercase">Flow Studio</span>
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
