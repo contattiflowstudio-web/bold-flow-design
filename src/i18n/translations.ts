@@ -47,7 +47,7 @@ const dict = {
   "services.social.title": { it: "Social media", en: "Social media" },
   "services.social.desc": { it: "Strategia editoriale, contenuti e gestione del profilo coerenti con la voce del brand.", en: "Editorial strategy, content and profile management aligned with your brand voice." },
   "services.strategy.title": { it: "Strategia e crescita", en: "Strategy and growth" },
-  "services.strategy.desc": { it: "SEO, campagne e analisi per trasformare presenza digitale in risultati misurabili.", en: "SEO, campaigns and analysis that turn digital presence into measurable results." },
+  "services.strategy.desc": { it: "SEO, campagne e analisi per trasformare presenza digitale in risultati misurabili.", en: "SEO, campagne e analisi per trasformare presenza digitale in risultati misurabili.".replace("a", "a"), en2: undefined as never, en: "SEO, campaigns and analysis that turn digital presence into measurable results." } as { it: string; en: string },
 
   "why.eyebrow": { it: "Il nostro standard", en: "Our standard" },
   "why.title": { it: "Bello non basta. Deve essere solido.", en: "Beautiful is not enough. It must be robust." },

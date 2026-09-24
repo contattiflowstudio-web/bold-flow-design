@@ -1,4 +1,4 @@
-import { Cloud, Code2, Database, Gauge, Link2, LockKeyhole, ShoppingBag, Smartphone, TrendingUp } from "lucide-react";
+import { Cloud, Code2, Database, Gauge, Link2, LockKeyhole, ShoppingBag, Smartphone, TrendingUp, Wrench } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
@@ -12,6 +12,7 @@ const services: { icon: typeof Cloud; title: TranslationKey; desc: TranslationKe
   { icon: Gauge, title: "services.optimization.title", desc: "services.optimization.desc", code: "OPT" },
   { icon: Smartphone, title: "services.social.title", desc: "services.social.desc", code: "SOC" },
   { icon: TrendingUp, title: "services.strategy.title", desc: "services.strategy.desc", code: "GRW" },
+  { icon: Wrench, title: "services.support.title", desc: "services.support.desc", code: "SUP" },
 ];
 
 export const Services = () => {
@@ -28,7 +29,7 @@ export const Services = () => {
         </div>
         <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <article key={service.title} className={`reveal bento-panel min-h-[18rem] ${index === 0 || index === 5 ? "sm:col-span-2" : ""}`}>
+            <article key={service.title} className={`reveal bento-panel min-h-[18rem] ${index === 0 || index === 5 || index === 9 ? "sm:col-span-2" : ""}`}>
               <div className="flex items-center justify-between">
                 <service.icon className="h-8 w-8 text-primary-glow" />
                 <span className="font-mono text-xs text-muted-foreground">{service.code}.{String(index + 1).padStart(2, "0")}</span>

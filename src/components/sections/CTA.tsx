@@ -1,4 +1,5 @@
-import { ArrowRight, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -13,7 +14,7 @@ export const CTA = () => {
             <div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/70">{t("cta.badge")}</p><h2 className="mt-6 max-w-4xl font-display text-4xl leading-tight md:text-7xl">{t("cta.title")}</h2><p className="mt-5 max-w-2xl text-lg text-primary-foreground/80">{t("cta.subtitle")}</p></div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
               <Button size="xl" variant="secondary" asChild><a href="https://mail.google.com/mail/?view=cm&fs=1&to=contattiflowstudio@gmail.com" target="_blank" rel="noopener noreferrer"><Mail />{t("cta.primary")}<ArrowRight /></a></Button>
-              <Button size="xl" className="border border-primary-foreground/30 bg-transparent hover:bg-primary-foreground/10" asChild><a href="https://wa.me/393520017088" target="_blank" rel="noopener noreferrer"><MessageCircle />WhatsApp</a></Button>
+              <Button size="xl" className="border border-primary-foreground/30 bg-transparent hover:bg-primary-foreground/10" asChild><a href="https://wa.me/393520017088" target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="h-5 w-5" />WhatsApp</a></Button>
             </div>
           </div>
         </div>
