@@ -1,4 +1,5 @@
-import { Instagram, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { Link } from "react-router-dom";
 import flowLogo from "@/assets/flow-studio-brand.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -6,7 +7,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 const socials = [
   { Icon: Instagram, href: "https://www.instagram.com/igflowstudio", label: "Instagram" },
   { Icon: Linkedin, href: "https://www.linkedin.com/in/flowstudio", label: "LinkedIn" },
-  { Icon: MessageCircle, href: "https://wa.me/393520017088", label: "WhatsApp" },
+  { Icon: WhatsAppIcon, href: "https://wa.me/393520017088", label: "WhatsApp" },
 ];
 
 export const Footer = () => {
