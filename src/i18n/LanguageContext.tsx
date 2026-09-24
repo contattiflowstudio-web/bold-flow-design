@@ -7,7 +7,16 @@ type Ctx = {
   t: (key: TranslationKey) => string;
 };
 
-const LanguageContext = createContext<Ctx | undefined>(undefined);
+const LANGUAGE_CONTEXT_KEY = Symbol.for("flow-studio.language-context");
+type LanguageContextRegistry = typeof globalThis & {
+  [LANGUAGE_CONTEXT_KEY]?: ReturnType<typeof createContext<Ctx | undefined>>;
+};
+
+const contextRegistry = globalThis as LanguageContextRegistry;
+const LanguageContext =
+  contextRegistry[LANGUAGE_CONTEXT_KEY] ?? createContext<Ctx | undefined>(undefined);
+
+contextRegistry[LANGUAGE_CONTEXT_KEY] = LanguageContext;
 
 const STORAGE_KEY = "flow-lang";
 
