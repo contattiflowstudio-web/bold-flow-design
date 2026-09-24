@@ -42,6 +42,8 @@ const dict = {
   "services.connectors.desc": { it: "Colleghiamo strumenti, piattaforme e flussi operativi per ridurre il lavoro manuale.", en: "We connect tools, platforms and workflows to reduce manual work." },
   "services.commerce.title": { it: "E-commerce", en: "E-commerce" },
   "services.commerce.desc": { it: "Cataloghi, pagamenti e percorsi d'acquisto chiari, sicuri e ottimizzati per la conversione.", en: "Catalogues, payments and clear, secure purchase journeys optimized for conversion." },
+  "services.optimization.title": { it: "Ottimizzazione e SEO", en: "Optimization and SEO" },
+  "services.optimization.desc": { it: "Velocità, posizionamento sui motori di ricerca e miglioramenti continui per farti trovare e scegliere.", en: "Speed, search ranking and continuous improvements that help you get found and chosen." },
   "services.social.title": { it: "Social media", en: "Social media" },
   "services.social.desc": { it: "Strategia editoriale, contenuti e gestione del profilo coerenti con la voce del brand.", en: "Editorial strategy, content and profile management aligned with your brand voice." },
   "services.strategy.title": { it: "Strategia e crescita", en: "Strategy and growth" },
